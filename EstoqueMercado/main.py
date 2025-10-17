@@ -1,6 +1,6 @@
 def menu_principal():
     opcoes = ["Gerenciar Estoque", "Visulizar Estoque", "Sair"]
-    print("Olá, seja bem vindo ao Sistema de Estoque Mercado!")
+    print("Olá, seja bem vindo ao Sistema de Estoque de Mercado!")
     for i in range(len(opcoes)):
         if opcoes[i] == "Sair":
             print(f"0 - {opcoes[i]}")
