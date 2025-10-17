@@ -1,4 +1,4 @@
-    °Funcionalidades básicas :
+    ° Funcionalidades básicas:
 
 Essas deixam o sistema funcional e útil.
 
@@ -17,7 +17,7 @@ Visualizar produtos cadastrados
 Buscar produto específico
 → Pesquisar pelo nome ou código do produto.
 
-    °Funcionalidades intermediárias:
+    ° Funcionalidades intermediárias:
 
 Controle de entrada e saída de produtos
 → Registrar quando novos produtos chegam ou são vendidos.
@@ -29,12 +29,12 @@ Relatórios de estoque
 → Mostrar total de produtos, valor total do estoque ou categorias mais vendidas.
 
 Ordenação e filtros
-→ Listar produtos por ordem alfabética, categoria ou quantidade.
+→ Listar produtos por ordem categoria ou 
 
 Salvar e carregar dados
-→ Armazenar o estoque em um arquivo (.txt, .json, .csv) para não perder os dados ao fechar o programa.
+→ Armazenar o estoque em um arquivo .json para não perder os dados ao fechar o programa.
 
-    °Funcionalidades avançadas:
+    ° Funcionalidades avançadas:
 
 Login de usuários e permissões
 → Administrador, funcionário comum, etc.
