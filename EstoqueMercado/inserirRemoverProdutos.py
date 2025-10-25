@@ -6,7 +6,6 @@ from utils import Utils
 ARQUIVO_JSON = "produtos.json"
 
 def salvar_produtos_json(lista_produtos):
-    """Salva a lista de produtos no arquivo JSON"""
     with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
         json.dump([p.to_dict() for p in lista_produtos], f, ensure_ascii=False, indent=4)
 
@@ -98,7 +97,7 @@ def inserir_produto():
     preco = float(input("Digite o preço do produto: "))
     codigo = input("Digite o código do produto: ")
     print("Selecione a categoria do produto:")
-    categorias = ["Limpeza", "Alimentos_frescos", "Higiene_pessoal", "Carnes", "Bebidas"]
+    categorias = ["Limpeza", "Alimentos_frescos", "Higiene_pessoal", "Carnes", "Bebidas", "Objetos"]
     for i in range(len(categorias)):
         print(f"{i+1} - {categorias[i]}")
     escolha = int(input("Digite o número da categoria: "))
@@ -114,6 +113,8 @@ def inserir_produto():
         produto = Carnes(nome, quantidade, preco, codigo, tipo_corte=tipo_corte)
     elif escolha == 5:
         produto = Bebidas(nome, quantidade, preco, codigo)
+    elif escolha == 6:
+        produto = Objetos(nome, quantidade, preco, codigo)
     else:
         print("Categoria inválida!")
         return None
