@@ -3,9 +3,9 @@ import time
 import json
 from utils import Utils
 
-
 ARQUIVO_JSON = "produtos.json"
 
+# ===== Funções de salvar e carregar =====
 def salvar_produtos_json(lista_produtos):
     """Salva a lista de produtos no arquivo JSON"""
     with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
@@ -15,6 +15,10 @@ def carregar_produtos_json():
     if not os.path.exists(ARQUIVO_JSON):
         return []
     
+    # se o arquivo estiver vazio, retorna lista vazia
+    if os.path.getsize(ARQUIVO_JSON) == 0:
+        return []
+
     with open(ARQUIVO_JSON, "r", encoding="utf-8") as f:
         dados = json.load(f)
 
@@ -36,6 +40,9 @@ def carregar_produtos_json():
         lista_produtos.append(produto)
 
     return lista_produtos
+
+
+# ===== Classes =====
 class Produtos:
     def __init__(self, nome, quantidade, preco, codigo):
         self.nome = nome
@@ -43,36 +50,45 @@ class Produtos:
         self.preco = preco
         self.codigo = codigo
 
+    def to_dict(self):
+        return self.__dict__
+
     def __str__(self):
-        return f"Nome: {self.nome}\nCategoria: {self.categoria}\nQuantidade: {self.quantidade}\nPreco: {self.preco}\nCodigo: {self.codigo}"
-    
+        return f"Nome: {self.nome}\nCategoria: {self.categoria}\nQuantidade: {self.quantidade}\nPreço: {self.preco}\nCódigo: {self.codigo}"
+
 
 class Limpeza(Produtos):
     def __init__(self, nome, quantidade, preco, codigo, categoria="Limpeza"):
         super().__init__(nome, quantidade, preco, codigo)
         self.categoria = categoria
 
+
 class Alimentos_frescos(Produtos):
     def __init__(self, nome, quantidade, preco, codigo, categoria="Alimentos_frescos"):
         super().__init__(nome, quantidade, preco, codigo)
         self.categoria = categoria
+
 
 class higiene_pessoal(Produtos):
     def __init__(self, nome, quantidade, preco, codigo, categoria="Higiene_pessoal"):
         super().__init__(nome, quantidade, preco, codigo)
         self.categoria = categoria
 
+
 class Carnes(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, categoria="Carnes",tipo_corte=None):
+    def __init__(self, nome, quantidade, preco, codigo, categoria="Carnes", tipo_corte=None):
         super().__init__(nome, quantidade, preco, codigo)
         self.categoria = categoria
         self.tipo_corte = tipo_corte
+
 
 class Bebidas(Produtos):
     def __init__(self, nome, quantidade, preco, codigo, categoria="Bebidas"):
         super().__init__(nome, quantidade, preco, codigo)
         self.categoria = categoria
 
+
+# ===== Funções de Inserir / Remover =====
 def inserir_produto():
     Utils.limpar_tela()
     print("=== Inserir Produto ===")
@@ -105,6 +121,7 @@ def inserir_produto():
     time.sleep(2)
     return produto
 
+
 def remover_produto(lista_produtos):
     Utils.limpar_tela()
     print("=== Remover Produto ===")
@@ -133,8 +150,3 @@ def remover_produto(lista_produtos):
         print("Produto removido com sucesso!")
     else:
         print("Remoção cancelada.")
-
-    time.sleep(2)
-    return lista_produtos
-
-
