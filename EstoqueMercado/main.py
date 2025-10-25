@@ -29,7 +29,9 @@ def menu_principal():
             if produto:
                 lista_produtos.append(produto)
                 salvar_produtos_json(lista_produtos)
-          
+        elif resp == 2:
+            lista_produtos = remover_produto(lista_produtos)
+            salvar_produtos_json(lista_produtos)
 
 if __name__ == '__main__':
     menu_principal() 

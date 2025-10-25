@@ -1,0 +1,9 @@
+[
+    {
+        "nome": "Abacate",
+        "quantidade": 3,
+        "preco": 5.0,
+        "codigo": "001",
+        "categoria": "Alimentos_frescos"
+    }
+]
