@@ -3,6 +3,7 @@ import time
 import json
 from utils import Utils
 
+
 ARQUIVO_JSON = "produtos.json"
 
 def salvar_produtos_json(lista_produtos):
