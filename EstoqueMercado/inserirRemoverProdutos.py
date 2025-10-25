@@ -71,3 +71,37 @@ def inserir_produto():
     print("Produto inserido com sucesso!")
     time.sleep(2)
     return produto
+
+def remover_produto(lista_produtos):
+    Utils.limpar_tela()
+    print("=== Remover Produto ===")
+    codigo = input("Digite o código do produto que deseja remover: ")
+
+    produto_encontrado = None
+    for produto in lista_produtos:
+        if produto.codigo == codigo:
+            produto_encontrado = produto
+            break
+
+    if not produto_encontrado:
+        print("Produto não encontrado!")
+        time.sleep(2)
+        return lista_produtos
+
+    print("\nProduto encontrado:")
+    print(f"Nome: {produto_encontrado.nome}")
+    print(f"Código: {produto_encontrado.codigo}")
+    print(f"Categoria: {produto_encontrado.categoria}")
+    print("-----------------------------")
+
+    confirmar = input("Deseja realmente remover este produto? (S/N): ").strip().upper()
+    if confirmar == "S":
+        lista_produtos.remove(produto_encontrado)
+        print("Produto removido com sucesso!")
+    else:
+        print("Remoção cancelada.")
+
+    time.sleep(2)
+    return lista_produtos
+
+
