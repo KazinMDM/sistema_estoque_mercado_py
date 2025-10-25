@@ -5,7 +5,6 @@ from utils import Utils
 
 ARQUIVO_JSON = "produtos.json"
 
-# ===== Funções de salvar e carregar =====
 def salvar_produtos_json(lista_produtos):
     """Salva a lista de produtos no arquivo JSON"""
     with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
@@ -14,8 +13,7 @@ def salvar_produtos_json(lista_produtos):
 def carregar_produtos_json():
     if not os.path.exists(ARQUIVO_JSON):
         return []
-    
-    # se o arquivo estiver vazio, retorna lista vazia
+
     if os.path.getsize(ARQUIVO_JSON) == 0:
         return []
 
@@ -35,14 +33,14 @@ def carregar_produtos_json():
             produto = Carnes(**item)
         elif categoria == "Bebidas":
             produto = Bebidas(**item)
+        elif categoria == 'Objetos':
+            produto = Objetos(**item)
         else:
             produto = Produtos(**item)
         lista_produtos.append(produto)
 
     return lista_produtos
 
-
-# ===== Classes =====
 class Produtos:
     def __init__(self, nome, quantidade, preco, codigo):
         self.nome = nome
@@ -88,7 +86,10 @@ class Bebidas(Produtos):
         self.categoria = categoria
 
 
-# ===== Funções de Inserir / Remover =====
+class Objetos(Produtos):
+    def __init__(self, nome, quantidade, preco, codigo, categoria="Objetos"):
+        super().__init__(nome, quantidade, preco, codigo)
+        self.categoria = categoria
 def inserir_produto():
     Utils.limpar_tela()
     print("=== Inserir Produto ===")
@@ -150,3 +151,7 @@ def remover_produto(lista_produtos):
         print("Produto removido com sucesso!")
     else:
         print("Remoção cancelada.")
+
+    time.sleep(2)
+    return lista_produtos
+  

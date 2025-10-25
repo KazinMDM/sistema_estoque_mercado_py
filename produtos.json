@@ -1,9 +1,9 @@
 [
     {
-        "nome": "Abacate",
-        "quantidade": 3,
-        "preco": 5.0,
-        "codigo": "001",
+        "nome": "Cu",
+        "quantidade": 1,
+        "preco": 80.0,
+        "codigo": "002",
         "categoria": "Alimentos_frescos"
     }
 ]
