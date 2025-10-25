@@ -44,3 +44,51 @@ Histórico de movimentações
 
 Integração com vendas
 → Atualizar o estoque automaticamente após uma venda.
+
+    ° Funcionalidades básicas:
+
+Essas deixam o sistema funcional e útil.
+
+Adicionar produtos ao estoque
+→ Inserir nome, categoria, quantidade, preço e código do produto.
+
+Remover produtos
+→ Excluir produtos que não estão mais disponíveis.
+
+Atualizar informações
+→ Alterar preço, quantidade ou nome de um produto.
+
+Visualizar produtos cadastrados
+→ Listar todos os produtos com suas informações. 
+
+Buscar produto específico
+→ Pesquisar pelo nome ou código do produto.
+
+    ° Funcionalidades intermediárias:
+
+Controle de entrada e saída de produtos
+→ Registrar quando novos produtos chegam ou são vendidos.
+
+Alerta de estoque baixo
+→ Avisar quando um produto está com quantidade abaixo de um limite definido.
+
+Relatórios de estoque
+→ Mostrar total de produtos, valor total do estoque ou categorias mais vendidas.
+
+Ordenação e filtros
+→ Listar produtos por ordem categoria ou 
+
+Salvar e carregar dados
+→ Armazenar o estoque em um arquivo .json para não perder os dados ao fechar o programa.
+
+    ° Funcionalidades avançadas:
+
+Login de usuários e permissões
+→ Administrador, funcionário comum, etc.
+
+Histórico de movimentações
+→ Guardar registros de todas as entradas e saídas de produtos.
+
+Integração com vendas
+→ Atualizar o estoque automaticamente após uma venda.
+
