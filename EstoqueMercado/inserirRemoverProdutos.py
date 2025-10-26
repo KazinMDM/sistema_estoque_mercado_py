@@ -90,7 +90,8 @@ class Objetos(Produtos):
     def __init__(self, nome, quantidade, preco, codigo, categoria="Objetos"):
         super().__init__(nome, quantidade, preco, codigo)
         self.categoria = categoria
-def inserir_produto():
+        
+def cadastrar_produto():
     Utils.limpar_tela()
     print("=== Inserir Produto ===")
     nome = input("Digite o nome do produto: ")
@@ -104,41 +105,18 @@ def inserir_produto():
     escolha = int(input("Digite o número da categoria: "))
     
     if escolha == 1:
-        produto = Limpeza(nome, quantidade, preco, codigo)
+        produto = Limpeza(nome, quantidade, preco, codigo, categoria="Limpeza")
     elif escolha == 2:
-        produto = Alimentos_frescos(nome, quantidade, preco, codigo)
+        produto = Alimentos_frescos(nome, quantidade, preco, codigo, categoria="Alimentos_frescos")
     elif escolha == 3:
-        produto = higiene_pessoal(nome, quantidade, preco, codigo)
+        produto = higiene_pessoal(nome, quantidade, preco, codigo, categoria="Higiene_pessoal")
     elif escolha == 4:
+        Utils.limpar_tela()
         tipo_corte = input("Digite o tipo de corte da carne: ")
-        produto = Carnes(nome, quantidade, preco, codigo, tipo_corte=tipo_corte)
+        produto = Carnes(nome, quantidade, preco, codigo, tipo_corte=tipo_corte, categoria="Carnes")
     elif escolha == 5:
         Utils.limpar_tela()
-        print("""
-        === Litragem de Bebidas ===
-            1 - 100ml
-            2 - 250ml
-            3 - 500ml
-            4 - 750ml
-            5 - 1000ml
-            6 - 2000ml
-            7 - 3000ml
-        """)
-        opcao_litros = int(input("Escolha a litragem da bebida (1-7): "))
-        if opcao_litros == 1:
-            litros = 100
-        elif opcao_litros == 2:
-            litros = 250
-        elif opcao_litros == 3:
-            litros = 500
-        elif opcao_litros == 4:
-            litros = 750
-        elif opcao_litros == 5:
-            litros = 1000
-        elif opcao_litros == 6:
-            litros = 2000
-        elif opcao_litros == 7:
-            litros = 3000
+        litros = float(input("Digite a quantidade em litros da bebida: "))
         produto = Bebidas(nome, quantidade, preco, codigo, litros=litros)
     elif escolha == 6:
         produto = Objetos(nome, quantidade, preco, codigo)
@@ -149,6 +127,8 @@ def inserir_produto():
     print("Produto inserido com sucesso!")
     time.sleep(2)
     return produto
+
+
 
 
 def remover_produto(lista_produtos):
