@@ -3,11 +3,14 @@ import json
 import os
 from utils import Utils
 from inserirRemoverProdutos import (
-    inserir_produto,
+    cadastrar_produto,
     remover_produto,
     salvar_produtos_json,
     carregar_produtos_json
 )
+from atualizacoes import atualizar_produto
+
+
 
 def menu_principal():
     lista_produtos = carregar_produtos_json()
@@ -25,13 +28,15 @@ def menu_principal():
             break
         elif resp == 1:
             Utils.limpar_tela()
-            produto = inserir_produto()
+            produto = cadastrar_produto()
             if produto:
                 lista_produtos.append(produto)
                 salvar_produtos_json(lista_produtos)
         elif resp == 2:
             lista_produtos = remover_produto(lista_produtos)
             salvar_produtos_json(lista_produtos)
+        elif resp == 3:
+            lista_produtos = atualizar_produto(lista_produtos)
 
 if __name__ == '__main__':
     menu_principal() 
