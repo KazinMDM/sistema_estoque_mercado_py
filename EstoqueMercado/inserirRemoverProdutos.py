@@ -80,9 +80,10 @@ class Carnes(Produtos):
 
 
 class Bebidas(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, categoria="Bebidas"):
+    def __init__(self, nome, quantidade, preco, codigo, litros=None ,categoria="Bebidas"):
         super().__init__(nome, quantidade, preco, codigo)
         self.categoria = categoria
+        self.litros = litros
 
 
 class Objetos(Produtos):
@@ -112,7 +113,33 @@ def inserir_produto():
         tipo_corte = input("Digite o tipo de corte da carne: ")
         produto = Carnes(nome, quantidade, preco, codigo, tipo_corte=tipo_corte)
     elif escolha == 5:
-        produto = Bebidas(nome, quantidade, preco, codigo)
+        Utils.limpar_tela()
+        print("""
+        === Litragem de Bebidas ===
+            1 - 100ml
+            2 - 250ml
+            3 - 500ml
+            4 - 750ml
+            5 - 1000ml
+            6 - 2000ml
+            7 - 3000ml
+        """)
+        opcao_litros = int(input("Escolha a litragem da bebida (1-7): "))
+        if opcao_litros == 1:
+            litros = 100
+        elif opcao_litros == 2:
+            litros = 250
+        elif opcao_litros == 3:
+            litros = 500
+        elif opcao_litros == 4:
+            litros = 750
+        elif opcao_litros == 5:
+            litros = 1000
+        elif opcao_litros == 6:
+            litros = 2000
+        elif opcao_litros == 7:
+            litros = 3000
+        produto = Bebidas(nome, quantidade, preco, codigo, litros=litros)
     elif escolha == 6:
         produto = Objetos(nome, quantidade, preco, codigo)
     else:
@@ -155,4 +182,3 @@ def remover_produto(lista_produtos):
 
     time.sleep(2)
     return lista_produtos
-  
