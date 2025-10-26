@@ -9,6 +9,8 @@ from inserirRemoverProdutos import (
     carregar_produtos_json
 )
 from atualizacoes import atualizar_produto
+from visualizar import visualizar_estoque
+
 
 
 
@@ -37,6 +39,9 @@ def menu_principal():
             salvar_produtos_json(lista_produtos)
         elif resp == 3:
             lista_produtos = atualizar_produto(lista_produtos)
+        elif resp == 4:
+            visualizar_estoque(lista_produtos)
+
 
 if __name__ == '__main__':
     menu_principal() 

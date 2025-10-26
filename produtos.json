@@ -1,9 +1,23 @@
 [
     {
-        "nome": "buceta",
+        "nome": "bucetinha",
         "quantidade": 1,
         "preco": 250.0,
         "codigo": "001",
+        "categoria": "Alimentos_frescos"
+    },
+    {
+        "nome": "cu",
+        "quantidade": 3,
+        "preco": 5.0,
+        "codigo": "002",
+        "categoria": "Alimentos_frescos"
+    },
+    {
+        "nome": "vagina",
+        "quantidade": 2,
+        "preco": 300.0,
+        "codigo": "003",
         "categoria": "Alimentos_frescos"
     }
 ]

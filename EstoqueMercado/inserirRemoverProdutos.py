@@ -73,18 +73,14 @@ class higiene_pessoal(Produtos):
 
 
 class Carnes(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, categoria="Carnes", tipo_corte=None):
+    def __init__(self, nome, quantidade, preco, codigo, categoria="Carnes"):
         super().__init__(nome, quantidade, preco, codigo)
         self.categoria = categoria
-        self.tipo_corte = tipo_corte
-
 
 class Bebidas(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, litros=None ,categoria="Bebidas"):
+    def __init__(self, nome, quantidade, preco, codigo ,categoria="Bebidas"):
         super().__init__(nome, quantidade, preco, codigo)
         self.categoria = categoria
-        self.litros = litros
-
 
 class Objetos(Produtos):
     def __init__(self, nome, quantidade, preco, codigo, categoria="Objetos"):
@@ -105,20 +101,22 @@ def cadastrar_produto():
     escolha = int(input("Digite o número da categoria: "))
     
     if escolha == 1:
+        Utils.limpar_tela()
         produto = Limpeza(nome, quantidade, preco, codigo, categoria="Limpeza")
     elif escolha == 2:
+        Utils.limpar_tela()
         produto = Alimentos_frescos(nome, quantidade, preco, codigo, categoria="Alimentos_frescos")
     elif escolha == 3:
+        Utils.limpar_tela()
         produto = higiene_pessoal(nome, quantidade, preco, codigo, categoria="Higiene_pessoal")
     elif escolha == 4:
         Utils.limpar_tela()
-        tipo_corte = input("Digite o tipo de corte da carne: ")
-        produto = Carnes(nome, quantidade, preco, codigo, tipo_corte=tipo_corte, categoria="Carnes")
+        produto = Carnes(nome, quantidade, preco, codigo, categoria="Carnes")
     elif escolha == 5:
         Utils.limpar_tela()
-        litros = float(input("Digite a quantidade em litros da bebida: "))
-        produto = Bebidas(nome, quantidade, preco, codigo, litros=litros)
+        produto = Bebidas(nome, quantidade, preco, codigo, categoria="Bebidas")
     elif escolha == 6:
+        Utils.limpar_tela()
         produto = Objetos(nome, quantidade, preco, codigo)
     else:
         print("Categoria inválida!")
@@ -126,7 +124,13 @@ def cadastrar_produto():
 
     print("Produto inserido com sucesso!")
     time.sleep(2)
-    return produto
+    if deseja_voltar := input("\nDeseja voltar ao menu principal? (S/N): ").lower() == 's':
+        Utils.limpar_tela()
+        return produto
+    else:
+        Utils.limpar_tela()
+        print("Saindo do sistema...")
+        exit()
 
 
 
@@ -161,4 +165,12 @@ def remover_produto(lista_produtos):
         print("Remoção cancelada.")
 
     time.sleep(2)
-    return lista_produtos
+    if deseja_voltar := input("\nDeseja voltar ao menu principal? (S/N): ").lower() == 'S':
+        Utils.limpar_tela()
+        return lista_produtos
+    else:
+        Utils.limpar_tela()
+        print("Saindo do sistema...")
+        exit()
+    
+    

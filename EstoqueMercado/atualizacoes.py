@@ -77,9 +77,9 @@ def atualizar_produto(lista_produtos):
           f"Quantidade: {produto_encontrado.quantidade}")
     
     time.sleep(3)
-    if deseja_voltar := input("\nDeseja voltar ao menu principal? (s/n): ").lower() == 's':
+    if deseja_voltar := input("\nDeseja voltar ao menu principal? (S/N): ").upper().strip() == 'S':
         Utils.limpar_tela()
-        return lista_produtos
+        return produto
     else:
         Utils.limpar_tela()
         print("Saindo do sistema...")
