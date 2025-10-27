@@ -30,13 +30,11 @@ def menu_principal():
             break
         elif resp == 1:
             Utils.limpar_tela()
-            produto = cadastrar_produto()
-            if produto:
-                lista_produtos.append(produto)
-                salvar_produtos_json(lista_produtos)
+            lista_produtos = cadastrar_produto(lista_produtos)
+
+                
         elif resp == 2:
             lista_produtos = remover_produto(lista_produtos)
-            salvar_produtos_json(lista_produtos)
         elif resp == 3:
             lista_produtos = atualizar_produto(lista_produtos)
         elif resp == 4:

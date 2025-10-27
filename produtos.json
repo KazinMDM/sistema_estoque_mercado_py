@@ -14,10 +14,17 @@
         "categoria": "Alimentos_frescos"
     },
     {
-        "nome": "agua",
+        "nome": "AGUINHA",
         "quantidade": 2,
         "preco": 5.0,
         "codigo": "003",
         "categoria": "Limpeza"
+    },
+    {
+        "nome": "cu",
+        "quantidade": 1,
+        "preco": 23.0,
+        "codigo": "004",
+        "categoria": "Alimentos_frescos"
     }
 ]

@@ -87,7 +87,7 @@ class Objetos(Produtos):
         super().__init__(nome, quantidade, preco, codigo)
         self.categoria = categoria
         
-def cadastrar_produto():
+def cadastrar_produto(lista_produtos):
     Utils.limpar_tela()
     print("=== Inserir Produto ===")
     nome = input("Digite o nome do produto: ")
@@ -120,12 +120,21 @@ def cadastrar_produto():
         produto = Objetos(nome, quantidade, preco, codigo)
     else:
         print("Categoria inválida!")
-        return None
-
+        return lista_produtos
+    
+    lista_produtos.append(produto)
+    salvar_produtos_json(lista_produtos)
     print("Produto inserido com sucesso!")
+
     time.sleep(2)
-    Utils.limpar_tela()
-    return produto
+    if deseja_voltar := input("\nDeseja voltar ao menu principal? (S/N): ").strip().upper() == 'S':
+        Utils.limpar_tela()
+        return lista_produtos
+    else:
+        Utils.limpar_tela()
+        print("Saindo do sistema...")
+        exit()
+    
     
 
 
@@ -156,13 +165,19 @@ def remover_produto(lista_produtos):
     confirmar = input("Deseja realmente remover este produto? (S/N): ").strip().upper()
     if confirmar == "S":
         lista_produtos.remove(produto_encontrado)
+        salvar_produtos_json(lista_produtos)
         print("Produto removido com sucesso!")
     else:
         print("Remoção cancelada.")
     
     time.sleep(2)
-    Utils.limpar_tela()
-    return lista_produtos
+    if deseja_voltar := input("\nDeseja voltar ao menu principal? (S/N): ").strip().upper() == 'S':
+        Utils.limpar_tela()
+        return lista_produtos
+    else:
+        Utils.limpar_tela()
+        print("Saindo do sistema...")
+        exit()
 
     
 
