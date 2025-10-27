@@ -76,6 +76,11 @@ def atualizar_produto(lista_produtos):
           f"Preço: R${produto_encontrado.preco}\n"
           f"Quantidade: {produto_encontrado.quantidade}")
     
-    time.sleep(3)
-    return produto
-    
+    time.sleep(2)
+    if deseja_voltar := input("\nDeseja voltar ao menu principal? (S/N): ").strip().upper() == 'S':
+        Utils.limpar_tela()
+        return lista_produtos
+    else:
+        Utils.limpar_tela()
+        print("Saindo do sistema...")
+        exit()

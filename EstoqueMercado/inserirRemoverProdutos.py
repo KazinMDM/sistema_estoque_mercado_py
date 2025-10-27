@@ -124,15 +124,8 @@ def cadastrar_produto():
 
     print("Produto inserido com sucesso!")
     time.sleep(2)
-
-    if deseja_voltar := input("\nDeseja voltar ao menu principal? (S/N): ").strip().upper() == 'S':
-        Utils.limpar_tela()
-        return produto
-    else:
-        Utils.limpar_tela()
-        return produto
-        print("Saindo do sistema...")
-        exit()
+    Utils.limpar_tela()
+    return produto
     
 
 
@@ -164,11 +157,14 @@ def remover_produto(lista_produtos):
     if confirmar == "S":
         lista_produtos.remove(produto_encontrado)
         print("Produto removido com sucesso!")
-        return produto
     else:
         print("Remoção cancelada.")
     
     time.sleep(2)
-    return produto
+    Utils.limpar_tela()
+    return lista_produtos
+
+    
+
 
     

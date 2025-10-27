@@ -20,6 +20,14 @@ def visualizar_estoque(lista_produtos):
 
     print(f"\nTotal de produtos cadastrados: {len(lista_produtos)}")
     
+    
     time.sleep(2)
-    return produto
+    if deseja_voltar := input("\nDeseja voltar ao menu principal? (S/N): ").strip().upper() == 'S':
+        Utils.limpar_tela()
+        return lista_produtos
+    else:
+        Utils.limpar_tela()
+        print("Saindo do sistema...")
+        exit()
+    
     

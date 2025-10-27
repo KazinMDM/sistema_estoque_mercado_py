@@ -14,38 +14,10 @@
         "categoria": "Alimentos_frescos"
     },
     {
-        "nome": "pau",
-        "quantidade": 1,
-        "preco": 3.0,
-        "codigo": "004",
-        "categoria": "Alimentos_frescos"
-    },
-    {
-        "nome": "carne",
+        "nome": "agua",
         "quantidade": 2,
-        "preco": 3.0,
-        "codigo": "005",
-        "categoria": "Carnes"
-    },
-    {
-        "nome": "copo",
-        "quantidade": 1,
-        "preco": 23.0,
-        "codigo": "006",
-        "categoria": "Objetos"
-    },
-    {
-        "nome": "xicara",
-        "quantidade": 2,
-        "preco": 3.0,
-        "codigo": "007",
-        "categoria": "Objetos"
-    },
-    {
-        "nome": "cavalo",
-        "quantidade": 3,
-        "preco": 40.0,
-        "codigo": "008",
-        "categoria": "Carnes"
+        "preco": 5.0,
+        "codigo": "003",
+        "categoria": "Limpeza"
     }
 ]
