@@ -4,7 +4,7 @@ import json
 from utils import Utils
 
 ARQUIVO_JSON = "produtos.json"
-
+ 
 def salvar_produtos_json(lista_produtos):
     with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
         json.dump([p.to_dict() for p in lista_produtos], f, ensure_ascii=False, indent=4)
