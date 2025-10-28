@@ -70,11 +70,13 @@ def atualizar_produto(lista_produtos):
 
     print("\nAlterações salvas com sucesso!")
     print("----------------------------------")
-    print(f"Produto atualizado:\n"
-          f"Nome: {produto_encontrado.nome}\n"
-          f"Categoria: {produto_encontrado.categoria}\n"
-          f"Preço: R${produto_encontrado.preco}\n"
-          f"Quantidade: {produto_encontrado.quantidade}")
+    print(
+        f"Produto atualizado:\n"
+        f"Nome: {produto_encontrado.nome}\n"
+        f"Categoria: {produto_encontrado.categoria}\n"
+        f"Preço: R${produto_encontrado.preco}\n"
+        f"Quantidade: {produto_encontrado.quantidade}"
+        )
     
     time.sleep(2)
     if deseja_voltar := input("\nDeseja voltar ao menu principal? (S/N): ").strip().upper() == 'S':
