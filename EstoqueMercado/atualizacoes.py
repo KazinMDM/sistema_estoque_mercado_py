@@ -1,6 +1,7 @@
 import time
 from utils import Utils
 from inserirRemoverProdutos import salvar_produtos_json
+from relatorio import salvar_relatorio_json
 
 def atualizar_produto(lista_produtos):
     Utils.limpar_tela()
@@ -40,6 +41,7 @@ def atualizar_produto(lista_produtos):
         print(f"\nNome atualizado com sucesso!")
         print(f"Antes: {antigo_nome}")
         print(f"Depois: {produto_encontrado.nome}")
+        salvar_relatorio_json({"acao": "atualizar_nome_produto", "produto": produto_encontrado.to_dict(), "Data": time.strftime("%Y-%m-%d | %H:%M:%S")})
 
     elif opcao == 2:
         antigo_preco = produto_encontrado.preco
@@ -48,6 +50,7 @@ def atualizar_produto(lista_produtos):
         print(f"\nPreço atualizado com sucesso!")
         print(f"Antes: R${antigo_preco}")
         print(f"Depois: R${produto_encontrado.preco}")
+        salvar_relatorio_json({"acao": "atualizar_preco_produto", "produto": produto_encontrado.to_dict(), "Data": time.strftime("%Y-%m-%d | %H:%M:%S")})
 
     elif opcao == 3:
         antiga_qtd = produto_encontrado.quantidade
@@ -56,6 +59,7 @@ def atualizar_produto(lista_produtos):
         print(f"\nQuantidade atualizada com sucesso!")
         print(f"Antes: {antiga_qtd}")
         print(f"Depois: {produto_encontrado.quantidade}")
+        salvar_relatorio_json({"acao": "atualizar_quantidade_produto", "produto": produto_encontrado.to_dict(), "Data": time.strftime("%Y-%m-%d | %H:%M:%S")})
 
     elif opcao == 0:
         print("Atualização cancelada.")
@@ -84,5 +88,7 @@ def atualizar_produto(lista_produtos):
         return lista_produtos
     else:
         Utils.limpar_tela()
+        time.sleep(1)
         print("Saindo do sistema...")
+        time.sleep(1)
         exit()

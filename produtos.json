@@ -12,5 +12,12 @@
         "preco": 5.0,
         "codigo": "003",
         "categoria": "Limpeza"
+    },
+    {
+        "nome": "Água",
+        "quantidade": 5,
+        "preco": 2.0,
+        "codigo": "090909",
+        "categoria": "Bebidas"
     }
 ]

@@ -1,5 +1,6 @@
 import time
 from utils import Utils
+from relatorio import salvar_relatorio_json
 
 def visualizar_estoque(lista_produtos):
     Utils.limpar_tela()
@@ -19,7 +20,8 @@ def visualizar_estoque(lista_produtos):
         print("-" * 40)
 
     print(f"\nTotal de produtos cadastrados: {len(lista_produtos)}")
-    
+
+    salvar_relatorio_json({"acao": "visualizar_estoque", "Data": time.strftime("%Y-%m-%d | %H:%M:%S")})
     
     time.sleep(2)
     if deseja_voltar := input("\nDeseja voltar ao menu principal? (S/N): ").strip().upper() == 'S':

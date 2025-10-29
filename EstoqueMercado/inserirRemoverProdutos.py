@@ -2,6 +2,7 @@ import os
 import time
 import json
 from utils import Utils
+from relatorio import carregar_relatorio_json, salvar_relatorio_json
 
 ARQUIVO_JSON = "produtos.json"
 
@@ -124,6 +125,8 @@ def cadastrar_produto(lista_produtos):
     
     lista_produtos.append(produto)
     salvar_produtos_json(lista_produtos)
+    salvar_relatorio_json({"acao": "inserir_produto", "produto": produto.to_dict(), "Data": time.strftime("%Y-%m-%d | %H:%M:%S")})
+
     print("Produto inserido com sucesso!")
 
     time.sleep(2)
@@ -166,6 +169,7 @@ def remover_produto(lista_produtos):
     if confirmar == "S":
         lista_produtos.remove(produto_encontrado)
         salvar_produtos_json(lista_produtos)
+        salvar_relatorio_json({"acao": "remover_produto", "produto": produto.to_dict(), "Data": time.strftime("%Y-%m-%d | %H:%M:%S")})
         print("Produto removido com sucesso!")
     else:
         print("Remoção cancelada.")

@@ -1,0 +1,11 @@
+{
+    "acao": "inserir_produto",
+    "produto": {
+        "nome": "Água",
+        "quantidade": 5,
+        "preco": 2.0,
+        "codigo": "090909",
+        "categoria": "Bebidas"
+    },
+    "Data": "2025-10-28 21:16:29"
+}
