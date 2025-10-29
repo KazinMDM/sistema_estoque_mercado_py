@@ -25,7 +25,7 @@ def carregar_produtos_json():
         categoria = item.get("categoria")
         if categoria == "Limpeza":
             produto = Limpeza(**item)
-        elif categoria == "Alimentos_frescos":
+        elif categoria == "Alimentos":
             produto = Alimentos(**item)
         elif categoria == "Higiene_pessoal":
             produto = higiene_pessoal(**item)
@@ -35,56 +35,65 @@ def carregar_produtos_json():
             produto = Bebidas(**item)
         elif categoria == 'Objetos':
             produto = Objetos(**item)
+        elif categoria =='Frutas':
+            produto = Frutas(**item)
 
         lista_produtos.append(produto)
 
     return lista_produtos
 
 class Produtos:
-    def __init__(self, nome, quantidade, preco, codigo):
+    def __init__(self, nome, quantidade, preco, codigo,data_de_fabricacao,data_de_validade):
         self.nome = nome
         self.quantidade = quantidade
         self.preco = preco
         self.codigo = codigo
+        self.data_de_fabricacao = data_de_fabricacao
+        self.data_de_validade = data_de_validade
 
     def to_dict(self):
         return self.__dict__
 
     def __str__(self):
-        return f"Nome: {self.nome}\nCategoria: {self.categoria}\nQuantidade: {self.quantidade}\nPreço: {self.preco}\nCódigo: {self.codigo}"
+        return f"Nome: {self.nome}\nCategoria: {self.categoria}\nQuantidade: {self.quantidade}\nPreço: {self.preco}\nCódigo: {self.codigo} \nData de Fabricação: {self.data_de_fabricacao}\nData de Validade: {self.data_de_validade}"
 
 
 class Limpeza(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, categoria="Limpeza"):
-        super().__init__(nome, quantidade, preco, codigo)
+    def __init__(self, nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade, categoria="Limpeza"):
+        super().__init__(nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade)
         self.categoria = categoria
 
 
 class Alimentos(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, categoria=None):
-        super().__init__(nome, quantidade, preco, codigo)
-        self.categoria = "Alimentos"
+    def __init__(self, nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade, categoria="Alimentos"):
+        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
+        self.categoria = categoria
 
 
 class higiene_pessoal(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, categoria="Higiene_pessoal"):
-        super().__init__(nome, quantidade, preco, codigo)
+    def __init__(self, nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade,categoria="Higiene_pessoal"):
+        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
         self.categoria = categoria
 
 
 class Carnes(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, categoria="Carnes"):
-        super().__init__(nome, quantidade, preco, codigo)
+    def __init__(self, nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade, categoria="Carnes"):
+        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
         self.categoria = categoria
 
 class Bebidas(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo ,categoria="Bebidas"):
-        super().__init__(nome, quantidade, preco, codigo)
+    def __init__(self, nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade,categoria="Bebidas"):
+        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
         self.categoria = categoria
 
 class Objetos(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, categoria="Objetos"):
-        super().__init__(nome, quantidade, preco, codigo)
+    def __init__(self, nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade, categoria="Objetos"):
+        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
+        self.categoria = categoria
+
+class Frutas(Produtos):
+    def __init__(self, nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade, categoria="Frutas"):
+        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
         self.categoria = categoria
         
 def cadastrar_produto(lista_produtos):
@@ -94,33 +103,38 @@ def cadastrar_produto(lista_produtos):
     quantidade = int(input("Digite a quantidade do produto: "))
     preco = float(input("Digite o preço do produto: "))
     codigo = input("Digite o código do produto: \n [quantidade de caracteres: 5] \n--> ")
+    data_de_fabricacao = input("Digite a data de fabricação do produto (DD/MM/AAAA): ")
+    data_de_validade = input("Digite a data de validade do produto (DD/MM/AAAA): ")
     while len(codigo) != 5:
         print("Código inválido! \nO código deve ter exatamente 5 caracteres.")
         codigo = input("Digite o código do produto: \n [quantidade de caracteres: 5] \n--> ")
     print("Selecione a categoria do produto:")
-    categorias = ["Limpeza", "Alimentos", "Higiene_pessoal", "Carnes", "Bebidas", "Objetos"]
+    categorias = ["Limpeza", "Alimentos", "Higiene_pessoal", "Carnes", "Bebidas", "Objetos","Frutas"]
     for i in range(len(categorias)):
         print(f"{i+1} - {categorias[i]}")
     escolha = int(input("Digite o número da categoria: "))
     
     if escolha == 1:
         Utils.limpar_tela()
-        produto = Limpeza(nome, quantidade, preco, codigo, categoria="Limpeza")
+        produto = Limpeza(nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade, categoria="Limpeza")
     elif escolha == 2:
         Utils.limpar_tela()
-        produto = Alimentos(nome, quantidade, preco, codigo, categoria="Alimentos")
+        produto = Alimentos(nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade, categoria="Alimentos")
     elif escolha == 3:
         Utils.limpar_tela()
-        produto = higiene_pessoal(nome, quantidade, preco, codigo, categoria="Higiene_pessoal")
+        produto = higiene_pessoal(nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade,categoria="Higiene_pessoal")
     elif escolha == 4:
         Utils.limpar_tela()
-        produto = Carnes(nome, quantidade, preco, codigo, categoria="Carnes")
+        produto = Carnes(nome, quantidade, preco, codigo,data_de_fabricacao ,data_de_validade, categoria="Carnes")
     elif escolha == 5:
         Utils.limpar_tela()
-        produto = Bebidas(nome, quantidade, preco, codigo, categoria="Bebidas")
+        produto = Bebidas(nome, quantidade, preco, codigo,data_de_fabricacao ,data_de_validade, categoria="Bebidas")
     elif escolha == 6:
         Utils.limpar_tela()
-        produto = Objetos(nome, quantidade, preco, codigo)
+        produto = Objetos(nome, quantidade, preco, codigo,data_de_fabricacao ,data_de_validade, categoria="Objetos")
+    elif escolha == 7:
+        Utils.limpar_tela()
+        produto = Frutas(nome, quantidade, preco, codigo,data_de_fabricacao ,data_de_validade, categoria="Frutas")
     else:
         print("Categoria inválida!")
         return lista_produtos

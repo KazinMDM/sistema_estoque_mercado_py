@@ -35,5 +35,16 @@
             "categoria": "Alimentos"
         },
         "Data": "2025-10-28 | 22:07:47"
+    },
+    {
+        "acao": "inserir_produto",
+        "produto": {
+            "nome": "Buc",
+            "quantidade": 1,
+            "preco": 23.0,
+            "codigo": "00001",
+            "categoria": "Alimentos"
+        },
+        "Data": "2025-10-29 | 07:54:44"
     }
 ]

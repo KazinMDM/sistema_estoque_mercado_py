@@ -5,7 +5,6 @@ from utils import Utils
 from inserirRemoverProdutos import (
     cadastrar_produto,
     remover_produto,
-    salvar_produtos_json,
     carregar_produtos_json
 )
 from atualizacoes import atualizar_produto

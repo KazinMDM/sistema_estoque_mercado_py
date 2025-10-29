@@ -26,5 +26,12 @@
         "preco": 0.5,
         "codigo": "09090",
         "categoria": "Alimentos"
+    },
+    {
+        "nome": "Buc",
+        "quantidade": 1,
+        "preco": 23.0,
+        "codigo": "00001",
+        "categoria": "Alimentos"
     }
 ]
