@@ -10,15 +10,16 @@ from inserirRemoverProdutos import (
 )
 from atualizacoes import atualizar_produto
 from visualizar import visualizar_estoque
+from relatorio import menu_relatorio
 
 
 
 
 def menu_principal():
-    lista_produtos = carregar_produtos_json()
+    lista_produtos = carregar_produtos_json()    
+    print("Olá, seja bem vindo ao Sistema de Estoque de Mercado!")
     while True:
-        opcoes = ["Inserir produtos", "Remover produtos", "Atualizar informações do produtos", "Visulizar Estoque", "Buscar produto", "Sair"]
-        print("Olá, seja bem vindo ao Sistema de Estoque de Mercado!")
+        opcoes = ["Inserir produtos", "Remover produtos", "Atualizar informações do produtos", "Visulizar Estoque", "Relatório de estoque", "Sair"]
         time.sleep(1)
         print("O que você deseja fazer?")
         time.sleep(1)
@@ -28,7 +29,6 @@ def menu_principal():
                 time.sleep(1.5)
             else:
                 print(f"{i+1} - {opcoes[i]}")
-                time.sleep(0.5)
         resp = int(input("Digite a opção desejada: "))
         if resp == 0:
             print("Saindo do sistema...")
@@ -41,6 +41,8 @@ def menu_principal():
             lista_produtos = atualizar_produto(lista_produtos)
         elif resp == 4:
             visualizar_estoque(lista_produtos)
+        elif resp == 5:
+            menu_relatorio()
 
 if __name__ == '__main__':
     menu_principal() 

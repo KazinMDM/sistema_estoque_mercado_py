@@ -1,23 +1,30 @@
 [
     {
-        "nome": "bucetinha",
-        "quantidade": 1,
-        "preco": 250.0,
-        "codigo": "001",
-        "categoria": "Alimentos_frescos"
-    },
-    {
-        "nome": "AGUINHA",
-        "quantidade": 50,
-        "preco": 5.0,
-        "codigo": "003",
-        "categoria": "Limpeza"
-    },
-    {
         "nome": "Água",
-        "quantidade": 5,
-        "preco": 2.0,
-        "codigo": "090909",
+        "quantidade": 15,
+        "preco": 3.0,
+        "codigo": "09783",
         "categoria": "Bebidas"
+    },
+    {
+        "nome": "Leite",
+        "quantidade": 4,
+        "preco": 7.0,
+        "codigo": "01010",
+        "categoria": "Bebidas"
+    },
+    {
+        "nome": "Antártica",
+        "quantidade": 14,
+        "preco": 25.0,
+        "codigo": "12345",
+        "categoria": "Bebidas"
+    },
+    {
+        "nome": "Pão",
+        "quantidade": 31,
+        "preco": 0.5,
+        "codigo": "09090",
+        "categoria": "Alimentos"
     }
 ]

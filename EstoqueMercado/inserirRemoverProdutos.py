@@ -26,7 +26,7 @@ def carregar_produtos_json():
         if categoria == "Limpeza":
             produto = Limpeza(**item)
         elif categoria == "Alimentos_frescos":
-            produto = Alimentos_frescos(**item)
+            produto = Alimentos(**item)
         elif categoria == "Higiene_pessoal":
             produto = higiene_pessoal(**item)
         elif categoria == "Carnes":
@@ -35,8 +35,7 @@ def carregar_produtos_json():
             produto = Bebidas(**item)
         elif categoria == 'Objetos':
             produto = Objetos(**item)
-        else:
-            produto = Produtos(**item)
+
         lista_produtos.append(produto)
 
     return lista_produtos
@@ -61,10 +60,10 @@ class Limpeza(Produtos):
         self.categoria = categoria
 
 
-class Alimentos_frescos(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, categoria="Alimentos_frescos"):
+class Alimentos(Produtos):
+    def __init__(self, nome, quantidade, preco, codigo, categoria=None):
         super().__init__(nome, quantidade, preco, codigo)
-        self.categoria = categoria
+        self.categoria = "Alimentos"
 
 
 class higiene_pessoal(Produtos):
@@ -91,12 +90,15 @@ class Objetos(Produtos):
 def cadastrar_produto(lista_produtos):
     Utils.limpar_tela()
     print("=== Inserir Produto ===")
-    nome = input("Digite o nome do produto: ")
+    nome = input("Digite o nome do produto: ").lower().capitalize()
     quantidade = int(input("Digite a quantidade do produto: "))
     preco = float(input("Digite o preço do produto: "))
-    codigo = input("Digite o código do produto: ")
+    codigo = input("Digite o código do produto: \n [quantidade de caracteres: 5] \n--> ")
+    while len(codigo) != 5:
+        print("Código inválido! \nO código deve ter exatamente 5 caracteres.")
+        codigo = input("Digite o código do produto: \n [quantidade de caracteres: 5] \n--> ")
     print("Selecione a categoria do produto:")
-    categorias = ["Limpeza", "Alimentos_frescos", "Higiene_pessoal", "Carnes", "Bebidas", "Objetos"]
+    categorias = ["Limpeza", "Alimentos", "Higiene_pessoal", "Carnes", "Bebidas", "Objetos"]
     for i in range(len(categorias)):
         print(f"{i+1} - {categorias[i]}")
     escolha = int(input("Digite o número da categoria: "))
@@ -106,7 +108,7 @@ def cadastrar_produto(lista_produtos):
         produto = Limpeza(nome, quantidade, preco, codigo, categoria="Limpeza")
     elif escolha == 2:
         Utils.limpar_tela()
-        produto = Alimentos_frescos(nome, quantidade, preco, codigo, categoria="Alimentos_frescos")
+        produto = Alimentos(nome, quantidade, preco, codigo, categoria="Alimentos")
     elif escolha == 3:
         Utils.limpar_tela()
         produto = higiene_pessoal(nome, quantidade, preco, codigo, categoria="Higiene_pessoal")
@@ -165,8 +167,9 @@ def remover_produto(lista_produtos):
     print(f"Categoria: {produto_encontrado.categoria}")
     print("-----------------------------")
 
-    confirmar = input("Deseja realmente remover este produto? (S/N): ").strip().upper()
-    if confirmar == "S":
+    confirmar = input("Deseja realmente remover este produto? (S/N): ").strip().lower()
+    confirmacao = ["s", "sim", "ss"]
+    if confirmar in confirmacao:
         lista_produtos.remove(produto_encontrado)
         salvar_produtos_json(lista_produtos)
         salvar_relatorio_json({"acao": "remover_produto", "produto": produto.to_dict(), "Data": time.strftime("%Y-%m-%d | %H:%M:%S")})

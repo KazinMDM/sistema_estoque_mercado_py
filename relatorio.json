@@ -1,11 +1,39 @@
-{
-    "acao": "inserir_produto",
-    "produto": {
-        "nome": "Água",
-        "quantidade": 5,
-        "preco": 2.0,
-        "codigo": "090909",
-        "categoria": "Bebidas"
+[
+    {
+        "acao": "inserir_produto",
+        "produto": {
+            "nome": "Antártica",
+            "quantidade": 14,
+            "preco": 25.0,
+            "codigo": "12345",
+            "categoria": "Bebidas"
+        },
+        "Data": "2025-10-28 21:59:02"
     },
-    "Data": "2025-10-28 21:16:29"
-}
+    {
+        "acao": "visualizar_estoque",
+        "Data": "2025-10-28 | 21:59:12"
+    },
+    {
+        "acao": "remover_produto",
+        "produto": {
+            "nome": "Pão",
+            "quantidade": 56,
+            "preco": 0.5,
+            "codigo": "90909",
+            "categoria": "Alimentos_frescos"
+        },
+        "Data": "2025-10-28 | 22:07:08"
+    },
+    {
+        "acao": "inserir_produto",
+        "produto": {
+            "nome": "Pão",
+            "quantidade": 31,
+            "preco": 0.5,
+            "codigo": "09090",
+            "categoria": "Alimentos"
+        },
+        "Data": "2025-10-28 | 22:07:47"
+    }
+]
