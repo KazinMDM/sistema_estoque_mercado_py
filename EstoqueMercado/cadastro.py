@@ -38,7 +38,7 @@ def cadastro(cls):
         print("CEP inválido")
         cep = input("Digite o cep [00000-000]:\n--> ")
     estado = input("Digite o estado:\n--> ")
-    pessoa = {
+    funcionarios = {
         "nome": nome,
         "data_nasc": data_nasc,
         "cpf": cpf,
@@ -52,7 +52,7 @@ def cadastro(cls):
             "estado": estado
         }
         }
-    pessoas = cls.carregar_funcionarios()
-    pessoas.append(pessoa)
-    cls.salvar_funcionarios(pessoas)
+    funcionario = cls.carregar_funcionario()
+    funcionarios.append(funcionario)
+    cls.salvar_funcionario(funcionarios)
     

@@ -94,8 +94,8 @@ def carregar_funcionario(cls):
     except FileNotFoundError:
         return []
 
-def salvar_funcionario(cls, pessoas):
+def salvar_funcionario(cls, funcionarios):
     with open(cls.__arquivo, "w", encoding="utf-8") as arquivo:
-        json.dump(pessoas, arquivo, ensure_ascii=False, indent=4)
+        json.dump(funcionarios, arquivo, ensure_ascii=False, indent=4)
         arquivo.close()
     print("Pessoas salvas com sucesso!")
