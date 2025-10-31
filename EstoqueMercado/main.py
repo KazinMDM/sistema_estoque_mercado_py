@@ -4,10 +4,10 @@ import os
 from utils import Utils
 from inserir import cadastrar_produto, carregar_produtos_json
 from dados import remover_produto, autenticar_usuario
+from relatorio import menu_relatorio
 from atualizacoes import atualizar_produto
 from visualizar import visualizar_estoque
-from relatorio import menu_relatorio
-from cadastro import cadastro
+from cadastro import Cadastro
 
 usuario_logado = None
 
@@ -18,7 +18,7 @@ def menu_inicial():
         print(f"{i+1} - {opc[i]}")
     resp = int(input("Digite a opção desejada: "))
     if resp == 1:
-        cadastro()
+        Cadastro.cadastro()
     elif resp == 2:
         nome = input("Digite seu nome de usuário: ").strip().capitalize()
         senha = input("Digite sua senha: ").strip()

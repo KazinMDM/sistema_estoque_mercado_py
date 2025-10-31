@@ -2,7 +2,8 @@ import os
 import time
 import json
 from utils import Utils
-from dados import salvar_produtos_json, carregar_produtos_json, salvar_relatorio_json
+from dados import salvar_produtos_json, carregar_produtos_json
+from relatorio import salvar_relatorio_json
 from relatorio import carregar_relatorio_json, salvar_relatorio_json
 from produto import Produtos, Limpeza, Alimentos, higiene_pessoal, Carnes, Bebidas, Objetos, Frutas
 

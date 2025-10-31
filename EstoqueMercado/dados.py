@@ -86,19 +86,20 @@ def remover_produto(lista_produtos):
         print("Saindo do sistema...")
         exit()
 
+
 def carregar_funcionario(cls):
-    try:
-        with open(cls.__arquivo, "r", encoding="utf-8") as arquivo:
-            pessoas = json.load(arquivo)
-            return pessoas
-    except FileNotFoundError:
+    if not os.path.exists(cls.__arquivo):
         return []
+    with open(cls.__arquivo, "r", encoding="utf-8") as arquivo:
+        try:
+            return json.load(arquivo)
+        except json.JSONDecodeError:
+            return []
 
 def salvar_funcionario(cls, funcionarios):
     with open(cls.__arquivo, "w", encoding="utf-8") as arquivo:
         json.dump(funcionarios, arquivo, ensure_ascii=False, indent=4)
-        arquivo.close()
-    print("Pessoas salvas com sucesso!")
+    print("Funcionários salvos com sucesso!")
 
 def autenticar_usuario(cls, nome, senha):
     funcionarios = cls.carregar_funcionario()
