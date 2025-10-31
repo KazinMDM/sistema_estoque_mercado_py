@@ -4,6 +4,8 @@
         "quantidade": 15,
         "preco": 3.0,
         "codigo": "09783",
+        "data_de_fabricacao": "N/A",
+        "data_de_validade": "N/A",
         "categoria": "Bebidas"
     },
     {
@@ -11,6 +13,8 @@
         "quantidade": 4,
         "preco": 7.0,
         "codigo": "01010",
+        "data_de_fabricacao": "N/A",
+        "data_de_validade": "N/A",
         "categoria": "Bebidas"
     },
     {
@@ -18,6 +22,8 @@
         "quantidade": 14,
         "preco": 25.0,
         "codigo": "12345",
+        "data_de_fabricacao": "N/A",
+        "data_de_validade": "N/A",
         "categoria": "Bebidas"
     },
     {
@@ -25,6 +31,8 @@
         "quantidade": 31,
         "preco": 0.5,
         "codigo": "09090",
+        "data_de_fabricacao": "N/A",
+        "data_de_validade": "N/A",
         "categoria": "Alimentos"
     },
     {
@@ -32,6 +40,17 @@
         "quantidade": 1,
         "preco": 23.0,
         "codigo": "00001",
+        "data_de_fabricacao": "N/A",
+        "data_de_validade": "N/A",
         "categoria": "Alimentos"
+    },
+    {
+        "nome": "Não sei",
+        "quantidade": 15,
+        "preco": 153.0,
+        "codigo": "85246",
+        "data_de_fabricacao": "15/08/2025",
+        "data_de_validade": "15/08/2027",
+        "categoria": "Limpeza"
     }
 ]

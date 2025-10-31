@@ -8,7 +8,7 @@ from relatorio import carregar_relatorio_json, salvar_relatorio_json
 ARQUIVO_JSON = "produtos.json"
 
 class Produtos:
-    def __init__(self, nome, quantidade, preco, codigo,data_de_fabricacao,data_de_validade):
+    def __init__(self, nome, quantidade, preco, codigo,data_de_fabricacao,data_de_validade):        
         self.nome = nome
         self.quantidade = quantidade
         self.preco = preco

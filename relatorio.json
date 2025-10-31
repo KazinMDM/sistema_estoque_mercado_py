@@ -46,5 +46,22 @@
             "categoria": "Alimentos"
         },
         "Data": "2025-10-29 | 07:54:44"
+    },
+    {
+        "acao": "inserir_produto",
+        "produto": {
+            "nome": "Não sei",
+            "quantidade": 15,
+            "preco": 153.0,
+            "codigo": "85246",
+            "data_de_fabricacao": "15/08/2025",
+            "data_de_validade": "15/08/2027",
+            "categoria": "Limpeza"
+        },
+        "Data": "2025-10-31 | 08:24:09"
+    },
+    {
+        "acao": "visualizar_estoque",
+        "Data": "2025-10-31 | 08:24:21"
     }
 ]
