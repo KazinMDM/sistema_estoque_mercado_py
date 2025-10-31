@@ -1,7 +1,11 @@
 import time
+import json
+import os
 from utils import Utils
-from inserirRemoverProdutos import salvar_produtos_json
 from relatorio import salvar_relatorio_json
+from produto import Produtos, Limpeza, Alimentos, higiene_pessoal, Carnes, Bebidas, Objetos, Frutas
+
+ARQUIVO_JSON = "produtos.json"
 
 def atualizar_produto(lista_produtos):
     Utils.limpar_tela()
@@ -92,3 +96,40 @@ def atualizar_produto(lista_produtos):
         print("Saindo do sistema...")
         time.sleep(1)
         exit()
+
+
+def salvar_produtos_json(lista_produtos):
+    with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
+        json.dump([p.to_dict() for p in lista_produtos], f, ensure_ascii=False, indent=4)
+
+def carregar_produtos_json():
+    if not os.path.exists(ARQUIVO_JSON):
+        return []
+
+    if os.path.getsize(ARQUIVO_JSON) == 0:
+        return []
+
+    with open(ARQUIVO_JSON, "r", encoding="utf-8") as f:
+        dados = json.load(f)
+
+    lista_produtos = []
+    for item in dados:
+        categoria = item.get("categoria")
+        if categoria == "Limpeza":
+            produto = Limpeza(**item)
+        elif categoria == "Alimentos":
+            produto = Alimentos(**item)
+        elif categoria == "Higiene_pessoal":
+            produto = higiene_pessoal(**item)
+        elif categoria == "Carnes":
+            produto = Carnes(**item)
+        elif categoria == "Bebidas":
+            produto = Bebidas(**item)
+        elif categoria == 'Objetos':
+            produto = Objetos(**item)
+        elif categoria =='Frutas':
+            produto = Frutas(**item)
+
+        lista_produtos.append(produto)
+
+    return lista_produtos

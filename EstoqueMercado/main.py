@@ -2,15 +2,11 @@ import time
 import json
 import os
 from utils import Utils
-from inserirRemoverProdutos import (
-    cadastrar_produto,
-    remover_produto,
-    carregar_produtos_json
-)
+from inserir import cadastrar_produto, carregar_produtos_json
+from remover import remover_produto
 from atualizacoes import atualizar_produto
 from visualizar import visualizar_estoque
 from relatorio import menu_relatorio
-
 
 
 

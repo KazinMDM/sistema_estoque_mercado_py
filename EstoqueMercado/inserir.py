@@ -3,6 +3,7 @@ import time
 import json
 from utils import Utils
 from relatorio import carregar_relatorio_json, salvar_relatorio_json
+from produto import Produtos, Limpeza, Alimentos, higiene_pessoal, Carnes, Bebidas, Objetos, Frutas
 
 ARQUIVO_JSON = "produtos.json"
 
@@ -41,61 +42,6 @@ def carregar_produtos_json():
         lista_produtos.append(produto)
 
     return lista_produtos
-
-class Produtos:
-    def __init__(self, nome, quantidade, preco, codigo,data_de_fabricacao,data_de_validade):
-        self.nome = nome
-        self.quantidade = quantidade
-        self.preco = preco
-        self.codigo = codigo
-        self.data_de_fabricacao = data_de_fabricacao
-        self.data_de_validade = data_de_validade
-
-    def to_dict(self):
-        return self.__dict__
-
-    def __str__(self):
-        return f"Nome: {self.nome}\nCategoria: {self.categoria}\nQuantidade: {self.quantidade}\nPreço: {self.preco}\nCódigo: {self.codigo} \nData de Fabricação: {self.data_de_fabricacao}\nData de Validade: {self.data_de_validade}"
-
-
-class Limpeza(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade, categoria="Limpeza"):
-        super().__init__(nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade)
-        self.categoria = categoria
-
-
-class Alimentos(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade, categoria="Alimentos"):
-        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
-        self.categoria = categoria
-
-
-class higiene_pessoal(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade,categoria="Higiene_pessoal"):
-        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
-        self.categoria = categoria
-
-
-class Carnes(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade, categoria="Carnes"):
-        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
-        self.categoria = categoria
-
-class Bebidas(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade,categoria="Bebidas"):
-        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
-        self.categoria = categoria
-
-class Objetos(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade, categoria="Objetos"):
-        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
-        self.categoria = categoria
-
-class Frutas(Produtos):
-    def __init__(self, nome, quantidade, preco, codigo, data_de_fabricacao, data_de_validade, categoria="Frutas"):
-        super().__init__(nome, quantidade, preco, codigo,data_de_fabricacao, data_de_validade)
-        self.categoria = categoria
-        
 def cadastrar_produto(lista_produtos):
     Utils.limpar_tela()
     print("=== Inserir Produto ===")
@@ -153,54 +99,3 @@ def cadastrar_produto(lista_produtos):
         Utils.limpar_tela()
         print("Saindo do sistema...")
         exit()
-    
-    
-
-
-
-
-def remover_produto(lista_produtos):
-    Utils.limpar_tela()
-    print("=== Remover Produto ===")
-    codigo = input("Digite o código do produto que deseja remover: ")
-
-    produto_encontrado = None
-    for produto in lista_produtos:
-        if produto.codigo == codigo:
-            produto_encontrado = produto
-            break
-
-    if not produto_encontrado:
-        print("Produto não encontrado!")
-        time.sleep(2)
-        return lista_produtos
-
-    print("\nProduto encontrado:")
-    print(f"Nome: {produto_encontrado.nome}")
-    print(f"Código: {produto_encontrado.codigo}")
-    print(f"Categoria: {produto_encontrado.categoria}")
-    print("-----------------------------")
-
-    confirmar = input("Deseja realmente remover este produto? (S/N): ").strip().lower()
-    confirmacao = ["s", "sim", "ss"]
-    if confirmar in confirmacao:
-        lista_produtos.remove(produto_encontrado)
-        salvar_produtos_json(lista_produtos)
-        salvar_relatorio_json({"acao": "remover_produto", "produto": produto.to_dict(), "Data": time.strftime("%Y-%m-%d | %H:%M:%S")})
-        print("Produto removido com sucesso!")
-    else:
-        print("Remoção cancelada.")
-    
-    time.sleep(2)
-    if deseja_voltar := input("\nDeseja voltar ao menu principal? (S/N): ").strip().upper() == 'S':
-        Utils.limpar_tela()
-        return lista_produtos
-    else:
-        Utils.limpar_tela()
-        print("Saindo do sistema...")
-        exit()
-
-    
-
-
-    
