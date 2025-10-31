@@ -1,10 +1,12 @@
 import json
 import os
 import time
+from utils import Utils
 from produto import Limpeza, Alimentos, higiene_pessoal, Carnes, Bebidas, Objetos, Frutas
 
 
 ARQUIVO_JSON = "produtos.json"
+__arquivo = "cadastro.json"
 
 def salvar_produtos_json(lista_produtos):
     with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
@@ -44,13 +46,6 @@ def carregar_produtos_json():
 
     return lista_produtos
 
-import time
-import json
-import os
-from relatorio import salvar_relatorio_json
-from utils import Utils
-from produto import Produtos, Limpeza, Alimentos, higiene_pessoal, Carnes, Bebidas, Objetos, Frutas
-
 def remover_produto(lista_produtos):
     Utils.limpar_tela()
     print("=== Remover Produto ===")
@@ -78,7 +73,6 @@ def remover_produto(lista_produtos):
     if confirmar in confirmacao:
         lista_produtos.remove(produto_encontrado)
         salvar_produtos_json(lista_produtos)
-        salvar_relatorio_json({"acao": "remover_produto", "produto": produto.to_dict(), "Data": time.strftime("%Y-%m-%d | %H:%M:%S")})
         print("Produto removido com sucesso!")
     else:
         print("Remoção cancelada.")
@@ -92,3 +86,16 @@ def remover_produto(lista_produtos):
         print("Saindo do sistema...")
         exit()
 
+def carregar_funcionario(cls):
+    try:
+        with open(cls.__arquivo, "r", encoding="utf-8") as arquivo:
+            pessoas = json.load(arquivo)
+            return pessoas
+    except FileNotFoundError:
+        return []
+
+def salvar_funcionario(cls, pessoas):
+    with open(cls.__arquivo, "w", encoding="utf-8") as arquivo:
+        json.dump(pessoas, arquivo, ensure_ascii=False, indent=4)
+        arquivo.close()
+    print("Pessoas salvas com sucesso!")
