@@ -99,3 +99,10 @@ def salvar_funcionario(cls, funcionarios):
         json.dump(funcionarios, arquivo, ensure_ascii=False, indent=4)
         arquivo.close()
     print("Pessoas salvas com sucesso!")
+
+def autenticar_usuario(cls, nome, senha):
+    funcionarios = cls.carregar_funcionario()
+    for funcionario in funcionarios:
+        if funcionario["nome"] == nome and funcionario["senha"] == senha:
+            return True
+    return False
