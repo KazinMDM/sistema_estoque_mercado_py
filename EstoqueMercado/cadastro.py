@@ -54,7 +54,8 @@ class Cadastro:
             }
         }
 
-        funcionarios = carregar_funcionario(Cadastro)
+        funcionarios = carregar_funcionario()
         funcionarios.append(novo_funcionario)
-        salvar_funcionario(Cadastro, funcionarios)
+        salvar_funcionario(funcionarios)
+
         print("Funcionário cadastrado com sucesso!")

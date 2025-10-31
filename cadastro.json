@@ -1,0 +1,16 @@
+[
+    {
+        "nome": "Num sei",
+        "data_nasc": "12/12/2020",
+        "cpf": "12345678900",
+        "telefone": "12345678900",
+        "senha": "123456",
+        "endereco": {
+            "rua": "f",
+            "numero": 3,
+            "bairro": "v",
+            "cep": "12345-000",
+            "estado": "b"
+        }
+    }
+]

@@ -12,24 +12,31 @@ from cadastro import Cadastro
 usuario_logado = None
 
 def menu_inicial():
+    __senha_admin = "admin"
     global usuario_logado
-    opc=["Cadastrar funcionário", "Login na conta", "Sair"]
-    for i in range(len(opc)):
-        print(f"{i+1} - {opc[i]}")
-    resp = int(input("Digite a opção desejada: "))
-    if resp == 1:
-        Cadastro.cadastro()
-    elif resp == 2:
-        nome = input("Digite seu nome de usuário: ").strip().capitalize()
-        senha = input("Digite sua senha: ").strip()
-        usuario_logado = autenticar_usuario(nome, senha)
-        if usuario_logado:
-            print(f"Login bem-sucedido! Bem-vindo, {usuario_logado['nome']}!")
-            cargo = usuario_logado.get("cargo")
-            if cargo == "Gerente":
-                menu_gerente()
-            elif cargo == "Caixa":
-                print("Acesso restrito para Caixa. Função em desenvolvimento.")
+    while True:    
+        opc=["Cadastrar funcionário", "Login na conta", "Sair"]
+        for i in range(len(opc)):
+            print(f"{i+1} - {opc[i]}")
+        resp = int(input("Digite a opção desejada: "))
+        if resp == 1:
+            Utils.limpar_tela()
+            senha = input("Digite a senha de administrador para cadastrar um novo funcionário: ").strip()
+            if senha == __senha_admin:
+                Cadastro.cadastro()
+            else:
+                print("Senha incorreta!\nVocê não tem a permissão para realizar essa operação.")
+        elif resp == 2:
+            nome = input("Digite seu nome de usuário: ").strip().capitalize()
+            senha = input("Digite sua senha: ").strip()
+            usuario_logado = autenticar_usuario(nome, senha)
+            if usuario_logado:
+                print(f"Login bem-sucedido! Bem-vindo, {usuario_logado['nome']}!")
+                cargo = usuario_logado.get("cargo")
+                if cargo == "Gerente":
+                    menu_gerente()
+                elif cargo == "Caixa":
+                    print("Acesso restrito para Caixa. Função em desenvolvimento.")
 
 
 
@@ -89,4 +96,3 @@ def menu_caixa():
 
 if __name__ == '__main__':
     menu_inicial()
-    

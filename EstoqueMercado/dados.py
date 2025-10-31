@@ -6,7 +6,6 @@ from produto import Limpeza, Alimentos, higiene_pessoal, Carnes, Bebidas, Objeto
 
 
 ARQUIVO_JSON = "produtos.json"
-__arquivo = "cadastro.json"
 
 def salvar_produtos_json(lista_produtos):
     with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
@@ -87,19 +86,23 @@ def remover_produto(lista_produtos):
         exit()
 
 
-def carregar_funcionario(cls):
-    if not os.path.exists(cls.__arquivo):
+__arquivo = "cadastro.json"
+
+def carregar_funcionario():
+    if not os.path.exists(__arquivo):
         return []
-    with open(cls.__arquivo, "r", encoding="utf-8") as arquivo:
+    with open(__arquivo, "r", encoding="utf-8") as arquivo:
         try:
             return json.load(arquivo)
         except json.JSONDecodeError:
             return []
 
-def salvar_funcionario(cls, funcionarios):
-    with open(cls.__arquivo, "w", encoding="utf-8") as arquivo:
+def salvar_funcionario(funcionarios):
+    with open(__arquivo, "w", encoding="utf-8") as arquivo:
         json.dump(funcionarios, arquivo, ensure_ascii=False, indent=4)
     print("Funcionários salvos com sucesso!")
+
+
 
 def autenticar_usuario(cls, nome, senha):
     funcionarios = cls.carregar_funcionario()
